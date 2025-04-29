@@ -1,0 +1,59 @@
+# === General ===
+# Dependency directories
+node_modules/
+*/node_modules/ # Ignore node_modules in frontend and backend
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Environment variables
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# === Frontend (Next.js) ===
+# Build directory
+frontend/.next/
+frontend/out/
+
+# Other Next.js specific files
+frontend/.swc/
+frontend/next-env.d.ts
+
+# === Backend (Hono/Node.js/Prisma) ===
+# Build Output (if you plan to compile TS to JS)
+backend/dist/
+backend/build/
+
+# Prisma SQLite database file (as specified in spec)
+backend/prisma/*.db
+backend/prisma/*.db-journal
+
+# Prisma generated client (usually good to keep, but ignore if regenerated in build)
+# backend/node_modules/.prisma/client/
+
+# === Editor ===
+# VSCode settings specific to user, if any (we keep .vscode shared settings)
+# .vscode/*
+# !.vscode/settings.json
+# !.vscode/extensions.json
+
+# === Other ===
+# Optional npm/pnpm cache directories
+.npm
+.pnpm-store/
+
+# Test results
+coverage/
+*.lcov
