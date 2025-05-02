@@ -7,7 +7,7 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "ignore": ["frontend/.next"]
+    "ignore": ["node_modules", ".next", ".astro", "dist"]
   },
   "formatter": {
     "enabled": true,
