@@ -1,0 +1,63 @@
+version: "3.9"
+
+services:
+  # PostgreSQLデータベース
+  db:
+    image: postgres:16-alpine
+    container_name: todo-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: todouser
+      POSTGRES_PASSWORD: todopassword
+      POSTGRES_DB: tododb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U todouser -d tododb"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Honoバックエンド
+  backend:
+    build:
+      context: ./packages/backend
+      dockerfile: Dockerfile
+    container_name: todo-backend
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgresql://todouser:todopassword@db:5432/tododb
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./packages/backend:/app
+      - /app/node_modules
+    command: pnpm dev
+
+  # Next.jsフロントエンド（開発時は別途起動することを推奨）
+  # frontend:
+  #   build:
+  #     context: ./packages/frontend
+  #     dockerfile: Dockerfile
+  #   container_name: todo-frontend
+  #   restart: unless-stopped
+  #   ports:
+  #     - "3000:3000"
+  #   environment:
+  #     NODE_ENV: development
+  #     NEXT_PUBLIC_API_URL: http://localhost:8080
+  #   volumes:
+  #     - ./packages/frontend:/app
+  #     - /app/node_modules
+  #     - /app/.next
+  #   command: pnpm dev
+
+volumes:
+  postgres_data:
+    driver: local
