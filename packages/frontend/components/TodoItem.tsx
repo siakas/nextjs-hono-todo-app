@@ -56,7 +56,7 @@ export const TodoItem = ({ todo }: Props) => {
 
   return (
     <Card className="transition-all hover:shadow-md">
-      <CardContent className="flex items-center gap-3 p-4">
+      <CardContent className="flex items-center gap-3">
         <Checkbox
           checked={todo.completed}
           onCheckedChange={handleToggleComplete}
