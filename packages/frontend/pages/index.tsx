@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Todo APp - Next.js + Hono</title>
+        <title>Todo App - Next.js + Hono</title>
         <meta name="description" content="Modern Todo Application" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
