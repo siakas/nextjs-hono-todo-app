@@ -92,21 +92,21 @@ export const TodoItem = ({ todo }: Props) => {
           {isEditing ? (
             <>
               <Button
-                size="sm"
+                size="icon"
                 variant="ghost"
                 onClick={handleSaveEdit}
                 disabled={updateTodo.isPending}
               >
                 <Check className="size-4" />
               </Button>
-              <Button size="sm" variant="ghost" onClick={handleCancelEdit}>
+              <Button size="icon" variant="ghost" onClick={handleCancelEdit}>
                 <X className="size-4" />
               </Button>
             </>
           ) : (
             <>
               <Button
-                size="sm"
+                size="icon"
                 variant="ghost"
                 onClick={handleEdit}
                 disabled={deleteTodo.isPending}
@@ -114,7 +114,7 @@ export const TodoItem = ({ todo }: Props) => {
                 <Edit2 className="size-4" />
               </Button>
               <Button
-                size="sm"
+                size="icon"
                 variant="ghost"
                 onClick={handleDelete}
                 disabled={deleteTodo.isPending}
